@@ -3,7 +3,7 @@ import axios from 'axios'
 // Create axios instance with base configuration
 // Use relative URL in production (same domain), or env variable, or fallback to localhost for dev
 const apiBaseURL = import.meta.env.VITE_API_URL || 
-  (import.meta.env.PROD ? '/api' : 'http://localhost:3000/api');
+  (import.meta.env.PROD ? '/api' : 'http://localhost:5000/api');
 
 const api = axios.create({
   baseURL: apiBaseURL,

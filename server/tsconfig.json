@@ -2,19 +2,20 @@
   "compilerOptions": {
     "target": "ES2020",
     "lib": ["ES2020"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowJs": true,
-    "skipLibCheck": true,
+
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
     "strict": true,
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    "skipLibCheck": true,
+
     "outDir": "./dist",
     "rootDir": "./src",
-    "declaration": true,
-    "declarationMap": true,
+
     "sourceMap": true,
+    "declaration": false,
+
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
