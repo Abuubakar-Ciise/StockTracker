@@ -12,7 +12,7 @@ import { AppSidebar } from "@/components/sidebar/AppSidebar"
 export function DashboardLayout() {
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen bg-muted/30">
+      <div className="flex min-h-screen w-full bg-muted/30">
         <AppSidebar layout="dashboard" />
 
         <SidebarInset>
@@ -24,7 +24,7 @@ export function DashboardLayout() {
             </Button>
           </header>
 
-          <main className="p-6">
+          <main className="w-full p-6">
             <Outlet />
           </main>
         </SidebarInset>

@@ -52,6 +52,7 @@ type ProductState = {
   deleteProduct: (id: string) => Promise<boolean>
   setSearch: (value: string) => void
   setPage: (page: number) => void
+  setFilters: (filters: Partial<ProductFilters>) => void
   setSort: (sortBy: ProductFilters['sortBy'], sortOrder: ProductFilters['sortOrder']) => void
 }
 
@@ -194,6 +195,16 @@ export const useProductStore = create<ProductState>((set, get) => ({
       filters: {
         ...state.filters,
         page,
+      },
+    }))
+  },
+
+  setFilters(partial) {
+    set((state) => ({
+      filters: {
+        ...state.filters,
+        ...partial,
+        page: partial.page ?? 1,
       },
     }))
   },

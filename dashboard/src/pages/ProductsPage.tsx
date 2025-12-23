@@ -1,4 +1,4 @@
-import { ProductListView } from "@/views/products/ProductListView"
+import { ProductTable } from "@/views/products/ProductTable"
 
 export default function ProductsPage() {
   return (
@@ -7,7 +7,7 @@ export default function ProductsPage() {
         <p className="text-sm text-muted-foreground">Products</p>
         <h1 className="text-2xl font-semibold">Inventory</h1>
       </div>
-      <ProductListView />
+      <ProductTable />
     </div>
   )
 }

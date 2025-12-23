@@ -13,7 +13,7 @@ import { AppSidebar } from "@/components/sidebar/AppSidebar"
 export function ProductLayout() {
   return (
     <SidebarProvider defaultOpen>
-      <div className="flex min-h-screen bg-muted/30">
+      <div className="flex min-h-screen w-full bg-muted/30">
         <AppSidebar layout="products" />
 
         <SidebarInset>
@@ -40,7 +40,7 @@ export function ProductLayout() {
             </div>
           </header>
 
-          <main className="p-6">
+          <main className="w-full p-6">
             <Outlet />
           </main>
         </SidebarInset>
