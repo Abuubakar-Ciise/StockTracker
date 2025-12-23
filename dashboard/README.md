@@ -1,106 +1,73 @@
-# Stock Tracker Dashboard
+# React + TypeScript + Vite
 
-Frontend dashboard for the Stock Tracker application built with React, TypeScript, Vite, and Tailwind CSS.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Prerequisites
+Currently, two official plugins are available:
 
-- Node.js 18+
-- npm or yarn
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Environment Variables
+## React Compiler
 
-Create a `.env` file in the dashboard root directory:
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-```env
-VITE_API_URL=https://your-server-domain.com/api
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-For local development:
-```env
-VITE_API_URL=http://localhost:3000/api
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-**Important:** Environment variables must be prefixed with `VITE_` to be accessible in the application.
-
-## Installation
-
-```bash
-npm install
-```
-
-## Development
-
-```bash
-npm run dev
-```
-
-The dashboard will start on `http://localhost:5173` (default Vite port)
-
-## Production Build
-
-```bash
-npm run build
-```
-
-The production build will be generated in the `dist` directory.
-
-## Preview Production Build
-
-```bash
-npm run preview
-```
-
-## Deployment
-
-### Vercel
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Navigate to the dashboard directory
-3. Run `vercel` and follow the prompts
-4. Set environment variable `VITE_API_URL` in Vercel dashboard to point to your deployed server API
-5. The build command and output directory are automatically detected by Vercel
-
-**Note:** For automatic deployments, connect your repository to Vercel. Make sure to set the environment variable for each environment (production, preview, development).
-
-### Render
-
-1. Create a new Static Site on Render
-2. Connect your repository
-3. Set the root directory to `dashboard`
-4. Set build command: `npm run build`
-5. Set publish directory: `dist`
-6. Add environment variable `VITE_API_URL` in the Render dashboard pointing to your deployed server API
-
-**Important:** 
-- Set `VITE_API_URL` to your deployed server URL (e.g., `https://your-server.onrender.com/api`)
-- The API URL is embedded at build time, so you need to rebuild if you change it
-- For Render static sites, you'll need to trigger a new build to update environment variables
-
-## Project Structure
-
-```
-dashboard/
-├── src/
-│   ├── components/     # React components
-│   ├── pages/          # Page components
-│   ├── services/       # API service functions
-│   ├── store/          # Zustand state management
-│   └── views/          # View components
-├── public/             # Static assets
-└── dist/               # Production build output
-```
-
-## Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## Features
-
-- Product management (CRUD operations)
-- Stock analytics and reporting
-- Real-time dashboard with charts
-- Authentication integration
-- Responsive design

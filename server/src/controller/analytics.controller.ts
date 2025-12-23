@@ -38,7 +38,7 @@ export const getStockSummary = async (_req: Request, res: Response) => {
       },
     });
 
-    const totalInventoryValue = inventoryValueResult.reduce((acc, item) => {
+    const totalInventoryValue = inventoryValueResult.reduce((acc: number, item: { _sum: { quantity: number | null; price: number | null } }) => {
       const qty = item._sum.quantity ?? 0;
       const price = item._sum.price ?? 0;
       return acc + qty * price;
@@ -78,7 +78,7 @@ export const getStockByProduct = async (_req: Request, res: Response) => {
       },
     });
 
-    const data = products.map((p) => ({
+    const data = products.map((p: { id: string; name: string; price: number; quantity: number; createdAt: Date; updatedAt: Date }) => ({
       id: p.id,
       name: p.name,
       quantity: p.quantity,
@@ -97,5 +97,4 @@ export const getStockByProduct = async (_req: Request, res: Response) => {
     });
   }
 };
-
 
