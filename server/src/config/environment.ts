@@ -13,3 +13,16 @@ export const CLOUDINARY_CONFIG = {
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET
 };
+
+// Google OAuth configuration
+export const GOOGLE_CONFIG = {
+  clientId: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackUrl: process.env.GOOGLE_CALLBACK_URL,
+};
+
+// Better Auth
+export const BETTER_AUTH_CONFIG = {
+  secret: process.env.BETTER_AUTH_SECRET,
+  url: process.env.BETTER_AUTH_URL,
+};

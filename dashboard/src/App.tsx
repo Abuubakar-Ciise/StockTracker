@@ -1,20 +1,22 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Navigate, Route, Routes } from "react-router-dom"
+
+import { DashboardLayout } from "@/components/layouts/DashboardLayout"
+import { ProductLayout } from "@/components/layouts/ProductLayout"
+import DashboardPage from "@/pages/DashboardPage"
+import ProductsPage from "@/pages/ProductsPage"
 
 export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted">
-      <Card className="w-[350px]">
-        <CardHeader>
-          <CardTitle>shadcn/ui works 🚀</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-sm text-muted-foreground">
-            This card and button come from shadcn/ui.
-          </p>
-          <Button>Click me</Button>
-        </CardContent>
-      </Card>
-    </div>
-  );
+    <Routes>
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+      <Route element={<DashboardLayout />}>
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Route>
+
+      <Route element={<ProductLayout />}>
+        <Route path="/products" element={<ProductsPage />} />
+      </Route>
+    </Routes>
+  )
 }
