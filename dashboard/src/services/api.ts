@@ -1,12 +1,8 @@
 import axios from 'axios'
 
 // Create axios instance with base configuration
-// Use relative URL in production (same domain), or env variable, or fallback to localhost for dev
-const apiBaseURL = import.meta.env.VITE_API_URL || 
-  (import.meta.env.PROD ? '/api' : 'http://localhost:5000/api');
-
 const api = axios.create({
-  baseURL: apiBaseURL,
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
