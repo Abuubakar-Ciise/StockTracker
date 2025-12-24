@@ -275,7 +275,7 @@ export function ProductTable() {
           <div className="flex items-center gap-2">
             <Search className="h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search name or SKU..."
+              placeholder="Search name or descriptions..."
               value={filters.search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-64"
